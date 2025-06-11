@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
+import apiClient from "../../http-commons";
 
 interface Food {
     fno: number;
@@ -25,7 +25,7 @@ const Home = () => {
     useEffect(() => {
         const fetchHighScoreFoods = async () => {
             try {
-                const res = await axios.get<Food[]>('http://localhost/api/busan-food/high-score');
+                const res = await apiClient.get<Food[]>('/api/busan-food/high-score');
                 setHighScoreFoods(res.data);
                 console.log('res', res.data);
             } catch (err) {
