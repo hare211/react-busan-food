@@ -48,7 +48,7 @@ const Home = () => {
                     </p>
                     {!isLoggedIn && (
                         <ul className="actions">
-                            <li><Link to={"/register"} className="button big special">Sign Up</Link></li>
+                            <li><Link to={"/login"} className="button big special">Sign Up</Link></li>
                             <li><a href="#elements" className="button big alt">Learn More</a></li>
                         </ul>
                     )}

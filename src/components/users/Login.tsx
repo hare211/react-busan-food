@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import apiClient from "../../http-commons";
 
 
@@ -81,6 +81,15 @@ const Login = () => {
                         disabled={mutation.isPending}
                     />
                 </form>
+                <div style={{ marginTop: "1rem", textAlign: "center" }}>
+                    <Link
+                        to="/register"
+                        className="button alt"
+                        style={{ display: "block", width: "100%", maxWidth: "500px", margin: "0 auto" }}
+                    >
+                        회원가입
+                    </Link>
+                </div>
             </div>
         </section>
     );
