@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import {useNavigate, Link} from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import apiClient from "../../http-commons";
 
 
@@ -17,6 +18,7 @@ interface LoginResponse {
 
 const Login = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const [form, setForm] = useState<LoginForm>({
         username: "",
@@ -29,10 +31,7 @@ const Login = () => {
             return res.data;
         },
         onSuccess: (data) => {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("username", data.username);
-            localStorage.setItem("nickname", data.nickname);
-
+            login(data.token, data.username, data.nickname);
             alert("로그인 성공");
             navigate("/");
         },

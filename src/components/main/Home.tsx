@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import apiClient from "../../http-commons";
 import {Link} from "react-router";
-import {useAuth} from "../../hooks/useAuth";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface Food {
     fno: number;

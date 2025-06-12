@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../contexts/AuthContext";
 import * as FaIcons from "react-icons/fa";
 
 const Header = () => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, logout } = useAuth();
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLLIElement>(null);
     const navigate = useNavigate();
@@ -23,9 +23,7 @@ const Header = () => {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        localStorage.removeItem("nickname");
+        logout();
         navigate("/");
     }
 
