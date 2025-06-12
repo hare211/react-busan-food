@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import apiClient from "../../http-commons";
+import {Link} from "react-router";
+import {useAuth} from "../../hooks/useAuth";
 
 interface Food {
     fno: number;
@@ -19,8 +21,8 @@ interface Food {
 
 const Home = () => {
 
-
     const [highScoreFoods, setHighScoreFoods] = useState<Food[]>([]);
+    const { isLoggedIn } = useAuth();
 
     useEffect(() => {
         const fetchHighScoreFoods = async () => {
@@ -44,10 +46,12 @@ const Home = () => {
                     <p>
                         Find the Best Places to Eat — Tried, Tested, and Loved
                     </p>
-                    <ul className="actions">
-                        <li><a href="#content" className="button big special">Sign Up</a></li>
-                        <li><a href="#elements" className="button big alt">Learn More</a></li>
-                    </ul>
+                    {!isLoggedIn && (
+                        <ul className="actions">
+                            <li><Link to={"/register"} className="button big special">Sign Up</Link></li>
+                            <li><a href="#elements" className="button big alt">Learn More</a></li>
+                        </ul>
+                    )}
                 </div>
             </section>
 

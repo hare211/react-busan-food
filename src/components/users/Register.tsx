@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import apiClient from "../../http-commons";
 
 interface RegisterForm {
@@ -10,6 +11,8 @@ interface RegisterForm {
 }
 
 const Register = () => {
+    const navigate = useNavigate();
+
     const [form, setForm] = useState<RegisterForm>({
         username: "",
         password: "",
@@ -24,6 +27,7 @@ const Register = () => {
         },
         onSuccess: () => {
             alert("회원가입 완료");
+            navigate("/");
         },
         onError: () => {
             alert("회원가입 실패");
@@ -45,7 +49,6 @@ const Register = () => {
             <div className="container">
                 <header className="major">
                     <h2>회원가입</h2>
-                    <p>간단한 정보 입력으로 시작해 보세요</p>
                 </header>
 
                 <form
