@@ -32,6 +32,7 @@ const Login = () => {
         },
         onSuccess: (data) => {
             login(data.token, data.username, data.nickname);
+            console.log('data', data);
             alert("로그인 성공");
             navigate("/");
         },
