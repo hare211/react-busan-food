@@ -34,7 +34,7 @@ const Header = () => {
                 <nav id="nav">
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                        <li><a href="left-sidebar.html">부산 식당</a></li>
                         <li><a href="right-sidebar.html">Right Sidebar</a></li>
                         <li><a href="no-sidebar.html">No Sidebar</a></li>
                         {!isLoggedIn ? (
